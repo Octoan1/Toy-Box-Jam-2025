@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4fgfy2i4ib8f"]
+
+[ext_resource type="Texture2D" uid="uid://c6xq2bvu3cqta" path="res://Toy Box Assets/tbj2_sprites.png" id="1_ig7tw"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Tbj2Sprites" type="Sprite2D" parent="."]
+texture = ExtResource("1_ig7tw")
