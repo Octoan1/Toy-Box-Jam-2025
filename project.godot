@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="delete"
+config/name="Toy Box Jam 2025"
 run/main_scene="uid://c4fgfy2i4ib8f"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://c6xq2bvu3cqta"
 
 [display]
 
