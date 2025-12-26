@@ -276,7 +276,7 @@ tile_map_data = PackedByteArray("AAD5//z/AAAKAAAAAAD5//3/AAAKAAAAAAD5//7/AAAKAAA
 tile_set = SubResource("TileSet_0xm2m")
 
 [node name="Player" parent="." instance=ExtResource("1_oj8hd")]
-position = Vector2(60, 60)
+position = Vector2(64, 64)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
