@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfd7cpdof802d"]
+
+[ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/tbj2_sprites_transparent_padding.png" id="1_ficqy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guyhd"]
+atlas = ExtResource("1_ficqy")
+region = Rect2(0, 40, 10, 10)
+
+[node name="TopBarUI" type="CanvasLayer"]
+
+[node name="HeartsContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(5, 0)
+offset_right = 24.0
+offset_bottom = 27.0
+
+[node name="TextureRect" type="TextureRect" parent="HeartsContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_guyhd")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="HeartsContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_guyhd")
+stretch_mode = 4
+
+[node name="XPProgressBar" type="TextureProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_right = 0.5
+offset_bottom = 27.0
+grow_horizontal = 2
+scale = Vector2(1.0231045, 0.9965688)
+
+[node name="Timer" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "00:00"

@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://c4fgfy2i4ib8f"]
+[gd_scene load_steps=7 format=4 uid="uid://c4fgfy2i4ib8f"]
 
 [ext_resource type="PackedScene" uid="uid://2aabi06icyr6" path="res://Entities/Player/player.tscn" id="1_oj8hd"]
 [ext_resource type="Texture2D" uid="uid://c6xq2bvu3cqta" path="res://Toy Box Assets/tbj2_sprites.png" id="2_gnif3"]
+[ext_resource type="PackedScene" uid="uid://6yrq3iu3gky3" path="res://Entities/Enemies/chicken.tscn" id="3_lwy2l"]
+[ext_resource type="PackedScene" uid="uid://cfd7cpdof802d" path="res://UI/overlay.tscn" id="4_nj2yk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lwy2l"]
 texture = ExtResource("2_gnif3")
@@ -274,7 +276,25 @@ tile_map_data = PackedByteArray("AAD5//z/AAAKAAAAAAD5//3/AAAKAAAAAAD5//7/AAAKAAA
 tile_set = SubResource("TileSet_0xm2m")
 
 [node name="Player" parent="." instance=ExtResource("1_oj8hd")]
-position = Vector2(60, 68)
-scale = Vector2(0.063, 0.063)
+position = Vector2(60, 60)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Chicken" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
+player = NodePath("../Player")
+
+[node name="Chicken2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
+position = Vector2(116, 26)
+player = NodePath("../Player")
+
+[node name="Chicken3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
+position = Vector2(-30, 63)
+player = NodePath("../Player")
+
+[node name="Chicken4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
+position = Vector2(101, 108)
+player = NodePath("../Player")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Overlay" parent="CanvasLayer" instance=ExtResource("4_nj2yk")]

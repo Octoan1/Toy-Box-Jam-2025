@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://6yrq3iu3gky3"]
+
+[ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/tbj2_sprites_transparent_padding.png" id="1_0h8xp"]
+[ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://Entities/outline.gdshader" id="1_3f6lr"]
+[ext_resource type="Script" uid="uid://cdww24egi4e5q" path="res://Entities/Enemies/chicken.gd" id="1_v8ddq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8ddq"]
+shader = ExtResource("1_3f6lr")
+shader_parameter/line_color = Color(0.27515873, 3.113458e-07, 9.62615e-08, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3f6lr"]
+radius = 4.0
+
+[node name="Chicken" type="CharacterBody2D"]
+script = ExtResource("1_v8ddq")
+SPEED = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_v8ddq")
+texture = ExtResource("1_0h8xp")
+region_enabled = true
+region_rect = Rect2(30, 140, 10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3f6lr")
+debug_color = Color(0.9113462, 0.21197182, 0.52477556, 0.41960785)

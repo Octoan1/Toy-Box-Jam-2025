@@ -1,16 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://2aabi06icyr6"]
+[gd_scene load_steps=6 format=3 uid="uid://2aabi06icyr6"]
 
-[ext_resource type="Texture2D" uid="uid://bcw0uoeq2dmv6" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bgecedxyrm8ig" path="res://Entities/Player/player.gd" id="1_onrkg"]
+[ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://Entities/outline.gdshader" id="2_lu8i8"]
+[ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/tbj2_sprites_transparent_padding.png" id="3_lu8i8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tekja"]
+shader = ExtResource("2_lu8i8")
+shader_parameter/line_color = Color(0, 0, 0.17254902, 1)
+shader_parameter/line_thickness = 1.0000000475
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
-radius = 67.11929
+radius = 4.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_4flbx")
+material = SubResource("ShaderMaterial_tekja")
+texture = ExtResource("3_lu8i8")
+region_enabled = true
+region_rect = Rect2(0, 80, 10, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4flbx")
