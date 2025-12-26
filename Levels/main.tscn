@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4fgfy2i4ib8f"]
+
+[ext_resource type="PackedScene" uid="uid://2aabi06icyr6" path="res://Entities/Player/player.tscn" id="1_oj8hd"]
+
+[sub_resource type="TileSet" id="TileSet_0xm2m"]
+tile_size = Vector2i(8, 8)
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_oj8hd")]
+position = Vector2(60, 68)
+scale = Vector2(0.063, 0.063)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+tile_set = SubResource("TileSet_0xm2m")
