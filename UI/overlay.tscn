@@ -1,49 +1,76 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfd7cpdof802d"]
+[gd_scene load_steps=7 format=3 uid="uid://cfd7cpdof802d"]
 
+[ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://Entities/outline.gdshader" id="1_dtoip"]
 [ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/tbj2_sprites_transparent_padding.png" id="1_ficqy"]
-[ext_resource type="FontFile" uid="uid://v88xbtuxd0v" path="res://Toy Box Assets/pixel_font.png" id="2_guyhd"]
+[ext_resource type="Theme" uid="uid://b56py6kropip6" path="res://UI/theme.tres" id="3_dtoip"]
+[ext_resource type="Script" uid="uid://bg34rvyy13a34" path="res://UI/progress_bar_test.gd" id="4_lqtk5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lqtk5"]
+shader = ExtResource("1_dtoip")
+shader_parameter/line_color = Color(0.25810584, 0.033303387, 0.13366023, 1)
+shader_parameter/line_thickness = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_guyhd"]
 atlas = ExtResource("1_ficqy")
 region = Rect2(0, 40, 10, 10)
 
-[sub_resource type="Theme" id="Theme_dtoip"]
-default_font = ExtResource("2_guyhd")
-
 [node name="TopBarUI" type="CanvasLayer"]
 
 [node name="HeartsContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(5, 0)
-offset_right = 24.0
-offset_bottom = 27.0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 36.0
+offset_bottom = 11.0
+theme_override_constants/separation = 2
 
 [node name="TextureRect" type="TextureRect" parent="HeartsContainer"]
+material = SubResource("ShaderMaterial_lqtk5")
 layout_mode = 2
 texture = SubResource("AtlasTexture_guyhd")
 stretch_mode = 2
 
 [node name="TextureRect2" type="TextureRect" parent="HeartsContainer"]
-custom_minimum_size = Vector2(10, 0)
+material = SubResource("ShaderMaterial_lqtk5")
 layout_mode = 2
 texture = SubResource("AtlasTexture_guyhd")
-stretch_mode = 4
+stretch_mode = 2
 
-[node name="XPProgressBar" type="TextureProgressBar" parent="."]
+[node name="TextureRect3" type="TextureRect" parent="HeartsContainer"]
+material = SubResource("ShaderMaterial_lqtk5")
+layout_mode = 2
+texture = SubResource("AtlasTexture_guyhd")
+stretch_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -0.5
-offset_right = 0.5
-offset_bottom = 27.0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = 26.0
 grow_horizontal = 2
-scale = Vector2(1.0231045, 0.9965688)
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_dtoip")
+script = ExtResource("4_lqtk5")
 
-[node name="Timer" type="Label" parent="."]
+[node name="TimeClock" type="Label" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -1.0
-offset_bottom = 23.0
+offset_left = -42.0
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 18.0
 grow_horizontal = 0
-theme = SubResource("Theme_dtoip")
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_dtoip")
 text = "12:34"
+vertical_alignment = 1
+
+[node name="TestingTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="TestingTimer" to="ProgressBar" method="_on_testing_timer_timeout"]

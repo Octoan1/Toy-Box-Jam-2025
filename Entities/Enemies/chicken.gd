@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var player: Node2D
 @export var SPEED: int = 30
+@export var can_follow: bool = true
 
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -16,6 +17,9 @@ func _process(delta: float) -> void:
 	if not player: 
 		print("Error: no player")
 		return 
+		
+	if not can_follow:
+		return
 	
 	# get direction of player 
 	var direction: Vector2 = player.position - self.position

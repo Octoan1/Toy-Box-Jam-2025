@@ -282,18 +282,22 @@ position = Vector2(64, 64)
 
 [node name="Chicken" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
 player = NodePath("../Player")
+can_follow = false
 
 [node name="Chicken2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
-position = Vector2(116, 26)
+position = Vector2(97, 27)
 player = NodePath("../Player")
+can_follow = false
 
 [node name="Chicken3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
 position = Vector2(-30, 63)
 player = NodePath("../Player")
+can_follow = false
 
 [node name="Chicken4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
 position = Vector2(101, 108)
 player = NodePath("../Player")
+can_follow = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
