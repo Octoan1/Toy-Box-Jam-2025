@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://b56py6kropip6"]
 
-[ext_resource type="FontFile" uid="uid://v88xbtuxd0v" path="res://Toy Box Assets/pixel_font.png" id="1_go05t"]
+[ext_resource type="FontFile" uid="uid://v3tw5mocmvog" path="res://Toy Box Assets/Fonts/morefonts_trns_padd.png" id="1_go05t"]
 
 [resource]
 default_font = ExtResource("1_go05t")

@@ -3,12 +3,12 @@
 importer="font_data_image"
 type="FontFile"
 uid="uid://v88xbtuxd0v"
-path="res://.godot/imported/pixel_font.png-6df87b6245a81c662b9194ba548f696e.fontdata"
+path="res://.godot/imported/pixel_font.png-9aaacace5f67bb266b3256fe61222baa.fontdata"
 
 [deps]
 
-source_file="res://Toy Box Assets/pixel_font.png"
-dest_files=["res://.godot/imported/pixel_font.png-6df87b6245a81c662b9194ba548f696e.fontdata"]
+source_file="res://Toy Box Assets/Fonts/pixel_font.png"
+dest_files=["res://.godot/imported/pixel_font.png-9aaacace5f67bb266b3256fe61222baa.fontdata"]
 
 [params]
 
@@ -21,5 +21,5 @@ character_margin=Rect2i(0, 0, 0, 0)
 ascent=0
 descent=0
 fallbacks=[]
-compress=false
-scaling_mode=1
+compress=true
+scaling_mode=2

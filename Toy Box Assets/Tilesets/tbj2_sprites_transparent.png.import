@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://nlggsyh5003y"
-path="res://.godot/imported/tbj2_sprites_transparent.png-f43a4981875d2c6c46f45f5bc925fbc7.ctex"
+path="res://.godot/imported/tbj2_sprites_transparent.png-8034bff71deb3aa141450f6cbb2c1104.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Toy Box Assets/tbj2_sprites_transparent.png"
-dest_files=["res://.godot/imported/tbj2_sprites_transparent.png-f43a4981875d2c6c46f45f5bc925fbc7.ctex"]
+source_file="res://Toy Box Assets/Tilesets/tbj2_sprites_transparent.png"
+dest_files=["res://.godot/imported/tbj2_sprites_transparent.png-8034bff71deb3aa141450f6cbb2c1104.ctex"]
 
 [params]
 

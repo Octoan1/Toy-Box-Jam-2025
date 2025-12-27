@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://6yrq3iu3gky3"]
 
-[ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/tbj2_sprites_transparent_padding.png" id="1_0h8xp"]
-[ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://Entities/outline.gdshader" id="1_3f6lr"]
+[ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/Tilesets/tbj2_sprites_transparent_padding.png" id="1_0h8xp"]
+[ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://UI/outline.gdshader" id="1_3f6lr"]
 [ext_resource type="Script" uid="uid://cdww24egi4e5q" path="res://Entities/Enemies/chicken.gd" id="1_v8ddq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v8ddq"]
 shader = ExtResource("1_3f6lr")
-shader_parameter/line_color = Color(0.27515873, 3.113458e-07, 9.62615e-08, 1)
+shader_parameter/line_color = Color(0.19489288, 1.8500258e-07, 3.6098065e-08, 1)
 shader_parameter/line_thickness = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3f6lr"]

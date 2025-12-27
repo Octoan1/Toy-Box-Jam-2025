@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf436apsxf5r5"
-path="res://.godot/imported/tbj4_compilation_sf.png-06fc55cdaadd7050d174c92fba0031b8.ctex"
+uid="uid://h8prx8bh3ulm"
+path="res://.godot/imported/tileset_2023_toby.png-2008093494b1cd6ef467415cece7f9c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Toy Box Assets/tbj4_compilation_sf.png"
-dest_files=["res://.godot/imported/tbj4_compilation_sf.png-06fc55cdaadd7050d174c92fba0031b8.ctex"]
+source_file="res://Toy Box Assets/Tilesets/tileset_2023_toby.png"
+dest_files=["res://.godot/imported/tileset_2023_toby.png-2008093494b1cd6ef467415cece7f9c3.ctex"]
 
 [params]
 

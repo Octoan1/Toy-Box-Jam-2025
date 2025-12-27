@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://v3tw5mocmvog"
+path="res://.godot/imported/morefonts_trns_padd.png-4d06b3fd793e0fbd9a0f60391ba0224d.fontdata"
+
+[deps]
+
+source_file="res://Toy Box Assets/Fonts/morefonts_trns_padd.png"
+dest_files=["res://.godot/imported/morefonts_trns_padd.png-4d06b3fd793e0fbd9a0f60391ba0224d.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("32-95", "97-122")
+kerning_pairs=PackedStringArray()
+columns=16
+rows=6
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=0

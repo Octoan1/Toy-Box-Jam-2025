@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://detr242g65cwi"
-path="res://.godot/imported/oldworldgfx.png-f336180c5ad6791c9c6bf828596967fd.ctex"
+uid="uid://cba05f7vl3d3w"
+path="res://.godot/imported/tbj2_sprites_transparent_padding.png-2292c98a2b6ade42be177f97783f8cc5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Toy Box Assets/oldworldgfx.png"
-dest_files=["res://.godot/imported/oldworldgfx.png-f336180c5ad6791c9c6bf828596967fd.ctex"]
+source_file="res://Toy Box Assets/Tilesets/tbj2_sprites_transparent_padding.png"
+dest_files=["res://.godot/imported/tbj2_sprites_transparent_padding.png-2292c98a2b6ade42be177f97783f8cc5.ctex"]
 
 [params]
 
