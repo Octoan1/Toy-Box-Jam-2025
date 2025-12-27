@@ -11,5 +11,15 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _on_testing_timer_timeout() -> void:
-	self.value += 1
+var test = 0 
+var inc = 1
+func _on_progress_bar_test_timer_timout() -> void:
+	if test > 110:
+		#test = 0
+		inc = -1
+	
+	if test < -10:
+		inc = 1
+		
+	test += inc
+	self.value = test
