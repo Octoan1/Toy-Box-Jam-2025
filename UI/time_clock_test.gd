@@ -7,11 +7,14 @@ var time: int
 
 func _ready() -> void:
 	time = starting_time
+	
+	# set label to start time 
 	_update_label()
 
 func _on_time_clock_test_timer_timeout() -> void:
 	time -= 1
 	
+	# every time timer changes update label
 	_update_label()
 	
 func _update_label() -> void:

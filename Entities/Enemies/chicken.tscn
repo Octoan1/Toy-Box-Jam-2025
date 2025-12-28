@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://6yrq3iu3gky3"]
+[gd_scene load_steps=11 format=3 uid="uid://6yrq3iu3gky3"]
 
 [ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/Tilesets/tbj2_sprites_transparent_padding.png" id="1_0h8xp"]
 [ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://UI/outline.gdshader" id="1_3f6lr"]
 [ext_resource type="Script" uid="uid://cdww24egi4e5q" path="res://Entities/Enemies/chicken.gd" id="1_v8ddq"]
+[ext_resource type="Script" uid="uid://bykeu84f0bmpx" path="res://Components/health_component.gd" id="4_f1p20"]
+[ext_resource type="Script" uid="uid://3pairqmke32u" path="res://Components/hitbox_component.gd" id="5_774of"]
+[ext_resource type="Script" uid="uid://bd0qe8lyhoy2x" path="res://Components/hurtbox_component.gd" id="5_f1p20"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v8ddq"]
 shader = ExtResource("1_3f6lr")
@@ -12,9 +15,19 @@ shader_parameter/line_thickness = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_3f6lr"]
 radius = 4.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_774of"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3wchp"]
+radius = 4.0
+
 [node name="Chicken" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_v8ddq")
-SPEED = 20
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("4_f1p20")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_v8ddq")
@@ -24,4 +37,25 @@ region_rect = Rect2(30, 140, 10, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3f6lr")
-debug_color = Color(0.9113462, 0.21197182, 0.52477556, 0.41960785)
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 8
+script = ExtResource("5_f1p20")
+metadata/_custom_type_script = "uid://bd0qe8lyhoy2x"
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="HurtboxComponent"]
+visible = false
+shape = SubResource("CircleShape2D_774of")
+debug_color = Color(0.5176471, 1, 0.5294118, 0.41960785)
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("5_774of")
+metadata/_custom_type_script = "uid://3pairqmke32u"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+visible = false
+shape = SubResource("CircleShape2D_3wchp")
+debug_color = Color(0.69411767, 0, 0, 0.41960785)
