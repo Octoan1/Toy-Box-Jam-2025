@@ -10,7 +10,7 @@ func _physics_process(delta: float) -> void:
 
 	# move player
 	if direction:
-		velocity = direction * SPEED * delta
+		velocity = direction * SPEED # * delta (move_and_slide() handles delta already)
 	else:
 		velocity = Vector2.ZERO
 	

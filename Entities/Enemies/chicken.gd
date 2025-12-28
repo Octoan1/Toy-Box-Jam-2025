@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var SPEED: int = 30
+@export var SPEED: int = 1000
 
 @export var player: Node2D
 @export var can_follow: bool = true
