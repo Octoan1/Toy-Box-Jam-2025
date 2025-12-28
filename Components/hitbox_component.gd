@@ -5,10 +5,16 @@ class_name HitboxComponent
 func _ready() -> void:
 	self.monitoring = true
 	self.monitorable = false
+	
+	self.area_entered.connect(_on_hitbox_component_area_entered)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("test_attack"):
-		#self.proce
-		pass
+
+func _on_hitbox_component_area_entered(area: Area2D) -> void: 
+	# Check for Hurtbox
+	if area is HurtboxComponent:
+		var hurtbox : HurtboxComponent = area
 		
-func _on_area_entered 
+		var attack = Attack.new()
+		attack.attack_damage = 1
+		
+		hurtbox.damage(attack) 
