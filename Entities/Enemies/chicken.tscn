@@ -23,8 +23,8 @@ radius = 4.0
 
 [node name="Chicken" type="CharacterBody2D"]
 collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_v8ddq")
-can_follow = false
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("4_f1p20")

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var SPEED: int = 1000
+@export var SPEED: int = 15
 
 @export var player: Node2D
 @export var can_follow: bool = true
@@ -12,7 +12,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not player: 
 		print("Error: no player")
 		return 
@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	direction = direction.normalized()
 	
 	# move chicken towards player
-	self.position += direction * SPEED * delta
+	self.velocity = direction * SPEED
 	
 	move_and_slide()
 	

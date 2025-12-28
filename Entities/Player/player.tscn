@@ -23,6 +23,7 @@ size = Vector2(20, 14.5)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_onrkg")
 
 [node name="HealthComponent" type="Node2D" parent="."]
