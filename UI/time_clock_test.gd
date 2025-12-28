@@ -12,6 +12,7 @@ func _ready() -> void:
 	_update_label()
 
 func _on_time_clock_test_timer_timeout() -> void:
+	print(" ")
 	time -= 1
 	
 	# every time timer changes update label

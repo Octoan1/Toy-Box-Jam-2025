@@ -284,7 +284,7 @@ position = Vector2(64, 64)
 player = NodePath("../Player")
 
 [node name="Chicken2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
-position = Vector2(97, 27)
+position = Vector2(97, 64)
 player = NodePath("../Player")
 
 [node name="Chicken3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]

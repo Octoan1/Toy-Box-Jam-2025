@@ -4,7 +4,7 @@ class_name HealthComponent
 @export var MAX_HEALTH := 10
 var health : float
 
-signal died
+#signal died
 signal damaged
 
 func _ready() -> void:
@@ -12,8 +12,10 @@ func _ready() -> void:
 	
 func damage(attack: Attack):
 	health -= attack.attack_damage
+	print(owner.name + " health is now: "+ str(health))
 	
 	if health <= 0:
 		damaged.emit(attack.attack_damage)
 		# death 
-		died.emit()
+		#died.emit()
+		owner.queue_free()

@@ -30,6 +30,7 @@ folder_colors={
 "res://Components/": "gray",
 "res://Entities/": "yellow",
 "res://Entities/Enemies/": "red",
+"res://Entities/Weapons/": "orange",
 "res://Levels/": "blue",
 "res://Toy Box Assets/": "purple",
 "res://UI/": "green"
@@ -75,7 +76,8 @@ test_attack={
 2d_physics/layer_3="EnemyBody"
 2d_physics/layer_4="PlayerHitbox"
 2d_physics/layer_5="EnemyHitbox"
-2d_physics/layer_6="Hurtbox"
+2d_physics/layer_6="EnemyHurtbox"
+2d_physics/layer_7="PlayerHurtbox"
 
 [rendering]
 
