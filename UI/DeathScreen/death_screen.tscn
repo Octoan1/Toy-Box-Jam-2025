@@ -10,10 +10,10 @@ shader_parameter/line_color = Color(0.25490198, 0, 0, 1)
 shader_parameter/line_thickness = 1.0
 
 [node name="DeathScreenLayer" type="CanvasLayer"]
+process_mode = 2
 layer = 10
 
 [node name="DeathScreen" type="Control" parent="."]
-process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
