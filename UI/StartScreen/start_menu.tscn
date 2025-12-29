@@ -1,3 +1,106 @@
-[gd_scene format=3 uid="uid://csuetsy6a0aeu"]
+[gd_scene load_steps=6 format=3 uid="uid://csuetsy6a0aeu"]
+
+[ext_resource type="Script" uid="uid://cv4wwhxxf30lt" path="res://UI/StartScreen/start_screen.gd" id="1_5pm38"]
+[ext_resource type="Texture2D" uid="uid://c6xq2bvu3cqta" path="res://Toy Box Assets/Tilesets/tbj2_sprites.png" id="2_0q5hy"]
+[ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://UI/outline.gdshader" id="2_jvjc7"]
+[ext_resource type="Theme" uid="uid://b56py6kropip6" path="res://UI/theme.tres" id="3_0q5hy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ywrpf"]
+shader = ExtResource("2_jvjc7")
+shader_parameter/line_color = Color(0.25490198, 0, 0, 1)
+shader_parameter/line_thickness = 1.0
 
 [node name="StartMenuLayer" type="CanvasLayer"]
+process_mode = 2
+
+[node name="StartMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5pm38")
+
+[node name="TextureRect" type="TextureRect" parent="StartMenu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_0q5hy")
+
+[node name="ColorRect" type="ColorRect" parent="StartMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8862745)
+
+[node name="Title" type="Label" parent="StartMenu"]
+material = SubResource("ShaderMaterial_ywrpf")
+custom_minimum_size = Vector2(0, 28.54)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 20.0
+offset_right = 46.0
+offset_bottom = 48.54
+grow_horizontal = 2
+theme = ExtResource("3_0q5hy")
+text = "Chicken Survivors"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="GameJamLabel" type="Label" parent="StartMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 2.0
+offset_right = 128.0
+offset_bottom = 20.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_0q5hy")
+text = "Toybox jam 2025"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = 52.0
+offset_right = 30.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 7
+
+[node name="PlayButton" type="Button" parent="StartMenu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_0q5hy")
+text = "Play
+"
+
+[node name="InfoButton" type="Button" parent="StartMenu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_0q5hy")
+text = "Info"
+
+[node name="QuitButton" type="Button" parent="StartMenu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_0q5hy")
+text = "Quit"
+
+[connection signal="pressed" from="StartMenu/VBoxContainer/PlayButton" to="StartMenu" method="_on_play_button_pressed"]
+[connection signal="pressed" from="StartMenu/VBoxContainer/InfoButton" to="StartMenu" method="_on_info_button_pressed"]
+[connection signal="pressed" from="StartMenu/VBoxContainer/QuitButton" to="StartMenu" method="_on_quit_button_pressed"]
