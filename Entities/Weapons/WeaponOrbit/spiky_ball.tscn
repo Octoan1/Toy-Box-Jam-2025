@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bi6jujiikomlf"]
+
+[ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/Tilesets/tbj2_sprites_transparent_padding.png" id="1_0g0tg"]
+[ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://UI/outline.gdshader" id="1_5yqcy"]
+[ext_resource type="Script" uid="uid://3pairqmke32u" path="res://Scripts/Components/hitbox_component.gd" id="2_wgs1f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hy5dg"]
+shader = ExtResource("1_5yqcy")
+shader_parameter/line_color = Color(0.26817533, 0.18312469, 0.13821879, 1)
+shader_parameter/line_thickness = 1.0000000475
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lcph1"]
+radius = 6.0
+
+[node name="SpikyBall" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hy5dg")
+position = Vector2(1, 1)
+texture = ExtResource("1_0g0tg")
+region_enabled = true
+region_rect = Rect2(100, 30, 10, 10)
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 32
+script = ExtResource("2_wgs1f")
+metadata/_custom_type_script = "uid://3pairqmke32u"
+
+[node name="HitboxShape" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_lcph1")
+debug_color = Color(1, 0.41568628, 0.3764706, 0.41960785)

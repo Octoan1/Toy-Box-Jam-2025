@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpibseaen3xms"]
 
 [ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/Tilesets/tbj2_sprites_transparent_padding.png" id="1_rjo5t"]
-[ext_resource type="Script" uid="uid://3pairqmke32u" path="res://Components/hitbox_component.gd" id="2_uax7w"]
+[ext_resource type="Script" uid="uid://3pairqmke32u" path="res://Scripts/Components/hitbox_component.gd" id="2_uax7w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v7aq"]
 size = Vector2(11, 10)

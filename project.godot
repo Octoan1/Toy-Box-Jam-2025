@@ -15,6 +15,10 @@ run/main_scene="uid://c4fgfy2i4ib8f"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://c6xq2bvu3cqta"
 
+[autoload]
+
+GameManager="*res://Scripts/Autoloads/game_manager.gd"
+
 [display]
 
 window/size/viewport_width=128
@@ -27,11 +31,12 @@ window/stretch/scale_mode="integer"
 [file_customization]
 
 folder_colors={
-"res://Components/": "gray",
 "res://Entities/": "yellow",
 "res://Entities/Enemies/": "red",
 "res://Entities/Weapons/": "orange",
 "res://Levels/": "blue",
+"res://Scripts/": "gray",
+"res://Scripts/Components/": "gray",
 "res://Toy Box Assets/": "purple",
 "res://UI/": "green"
 }

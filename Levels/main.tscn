@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://c4fgfy2i4ib8f"]
+[gd_scene load_steps=8 format=4 uid="uid://c4fgfy2i4ib8f"]
 
 [ext_resource type="PackedScene" uid="uid://2aabi06icyr6" path="res://Entities/Player/player.tscn" id="1_oj8hd"]
 [ext_resource type="Texture2D" uid="uid://c6xq2bvu3cqta" path="res://Toy Box Assets/Tilesets/tbj2_sprites.png" id="2_gnif3"]
+[ext_resource type="PackedScene" uid="uid://b3gc6fglxebv5" path="res://Entities/Weapons/WeaponOrbit/weapon_orbit.tscn" id="3_7pswh"]
 [ext_resource type="PackedScene" uid="uid://6yrq3iu3gky3" path="res://Entities/Enemies/chicken.tscn" id="3_lwy2l"]
 [ext_resource type="PackedScene" uid="uid://cfd7cpdof802d" path="res://UI/overlay.tscn" id="4_nj2yk"]
 
@@ -279,6 +280,9 @@ tile_set = SubResource("TileSet_0xm2m")
 position = Vector2(64, 64)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="WeaponOrbit" parent="Player" instance=ExtResource("3_7pswh")]
+size = 2
 
 [node name="Chicken" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
 player = NodePath("../Player")

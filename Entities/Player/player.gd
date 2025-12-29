@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 
-const SPEED = 30
+@export var SPEED = 30
 
 
 func _physics_process(_delta: float) -> void:
