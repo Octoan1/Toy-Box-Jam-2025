@@ -5,10 +5,10 @@
 
 [node name="WeaponOrbit" type="Node2D"]
 script = ExtResource("1_mh0ky")
-amount = 9
 speed = 1
 type = ExtResource("2_eyc8s")
 
 [node name="SpikyBall" parent="." instance=ExtResource("2_eyc8s")]
+process_mode = 4
 visible = false
 position = Vector2(18, 0)

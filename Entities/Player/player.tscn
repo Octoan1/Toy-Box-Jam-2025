@@ -1,12 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://2aabi06icyr6"]
+[gd_scene load_steps=9 format=3 uid="uid://2aabi06icyr6"]
 
 [ext_resource type="Script" uid="uid://bgecedxyrm8ig" path="res://Entities/Player/player.gd" id="1_onrkg"]
 [ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://UI/outline.gdshader" id="2_lu8i8"]
 [ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/Tilesets/tbj2_sprites_transparent_padding.png" id="3_lu8i8"]
 [ext_resource type="Script" uid="uid://bykeu84f0bmpx" path="res://Scripts/Components/health_component.gd" id="4_tekja"]
 [ext_resource type="Script" uid="uid://bd0qe8lyhoy2x" path="res://Scripts/Components/hurtbox_component.gd" id="5_5c2io"]
-[ext_resource type="Script" uid="uid://3pairqmke32u" path="res://Scripts/Components/hitbox_component.gd" id="6_4wf4l"]
-[ext_resource type="PackedScene" uid="uid://cpibseaen3xms" path="res://Entities/Weapons/sword.tscn" id="7_01a4e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tekja"]
 shader = ExtResource("2_lu8i8")
@@ -19,9 +17,6 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_4wf4l"]
 radius = 4.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_01a4e"]
-size = Vector2(20, 14.5)
-
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
@@ -30,6 +25,7 @@ SPEED = 50
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("4_tekja")
+MAX_HEALTH = 3
 metadata/_custom_type_script = "uid://bykeu84f0bmpx"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -42,27 +38,14 @@ region_rect = Rect2(0, 80, 10, 10)
 visible = false
 shape = SubResource("CircleShape2D_4flbx")
 
-[node name="HurtboxComponent" type="Area2D" parent="."]
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 visible = false
+collision_layer = 64
+collision_mask = 16
 script = ExtResource("5_5c2io")
+health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://bd0qe8lyhoy2x"
 
 [node name="HurtboxShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("CircleShape2D_4wf4l")
-debug_color = Color(0.79068595, 0.35809547, 0.62436056, 0.41960785)
-
-[node name="HitboxComponent" type="Area2D" parent="."]
-process_mode = 4
-visible = false
-collision_layer = 8
-collision_mask = 32
-script = ExtResource("6_4wf4l")
-metadata/_custom_type_script = "uid://3pairqmke32u"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-shape = SubResource("RectangleShape2D_01a4e")
-
-[node name="Sword" parent="." instance=ExtResource("7_01a4e")]
-process_mode = 4
-visible = false
-position = Vector2(11, 0)
+debug_color = Color(0.28809366, 0.61801404, 0.37970543, 0.41960785)

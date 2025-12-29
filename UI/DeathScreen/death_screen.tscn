@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwcsb7r1axh3"]
+
+[ext_resource type="Script" uid="uid://bh4oy73ykokl" path="res://UI/DeathScreen/death_screen.gd" id="1_fooc1"]
+[ext_resource type="Theme" uid="uid://b56py6kropip6" path="res://UI/theme.tres" id="1_ls05l"]
+[ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://UI/outline.gdshader" id="1_n1nej"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tawod"]
+shader = ExtResource("1_n1nej")
+shader_parameter/line_color = Color(0.25490198, 0, 0, 1)
+shader_parameter/line_thickness = 1.0
+
+[node name="DeathScreenLayer" type="CanvasLayer"]
+layer = 10
+visible = false
+
+[node name="DeathScreen" type="Control" parent="."]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fooc1")
+
+[node name="ColorRect" type="ColorRect" parent="DeathScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8862745)
+
+[node name="Label" type="Label" parent="DeathScreen"]
+material = SubResource("ShaderMaterial_tawod")
+custom_minimum_size = Vector2(0, 28.54)
+layout_mode = 0
+offset_left = 23.5
+offset_top = 29.0
+offset_right = 104.5
+offset_bottom = 57.54
+theme = ExtResource("1_ls05l")
+text = "YOU DIED!"
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathScreen"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = 60.0
+offset_right = 30.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 7
+
+[node name="RetryButton" type="Button" parent="DeathScreen/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_ls05l")
+text = "Retry?"
+
+[node name="QuitButton" type="Button" parent="DeathScreen/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_ls05l")
+text = "Quit"
+
+[connection signal="pressed" from="DeathScreen/VBoxContainer/RetryButton" to="DeathScreen" method="_on_retry_button_pressed"]
+[connection signal="pressed" from="DeathScreen/VBoxContainer/QuitButton" to="DeathScreen" method="_on_quit_button_pressed"]

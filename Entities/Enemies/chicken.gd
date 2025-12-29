@@ -7,9 +7,10 @@ extends CharacterBody2D
 @export var can_follow: bool = true
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var health_component: HealthComponent = $HealthComponent
 
 func _ready() -> void:
-	pass # Replace with function body.
+	health_component.died.connect(_on_chicken_died)
 
 
 func _process(_delta: float) -> void:
@@ -34,3 +35,7 @@ func _process(_delta: float) -> void:
 		self.sprite.flip_h = false
 	elif direction.x > 0:
 		self.sprite.flip_h = true
+
+func _on_chicken_died():
+	print(self.name + " died")
+	queue_free()
