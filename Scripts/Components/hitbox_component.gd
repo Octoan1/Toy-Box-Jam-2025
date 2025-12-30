@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func _on_hitbox_component_area_entered(area: Area2D) -> void: 
-	print(area.name + " - owned by: " + area.owner.name)
+	#print(area.name + " - owned by: " + area.owner.name)
 	# Check for Hurtbox
 	if area is HurtboxComponent:
 		var hurtbox : HurtboxComponent = area

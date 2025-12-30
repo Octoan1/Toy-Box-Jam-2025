@@ -322,3 +322,5 @@ position = Vector2(64, 64)
 [node name="WeaponOrbit" parent="Player" instance=ExtResource("3_7pswh")]
 
 [node name="MagicMissle" parent="Player" instance=ExtResource("10_u05pv")]
+process_mode = 4
+visible = false

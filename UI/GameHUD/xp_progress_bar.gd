@@ -1,25 +1,18 @@
 extends TextureProgressBar
 
+# for now
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	# for now
+	var stats = get_node("/root/Main/Player/LevelComponent")
+	stats.xp_changed.connect(_on_xp_changed)
+	stats.level_up.connect(_on_level_up)
 
+func _on_xp_changed(current, max_xp) -> void:
+	self.max_value = max_xp
+	self.value = current
+	print("xp: ", current, " out of max:", max)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
-
-var test = 0 
-var inc = 1
-
-func _on_progress_bar_test_timer_timeout() -> void:
-	if test > 110:
-		#test = 0
-		inc = -1
-	
-	if test < -10:
-		inc = 1
-		
-	test += inc
-	self.value = test
+func _on_level_up(level) -> void:
+	print("Level up: ", level)

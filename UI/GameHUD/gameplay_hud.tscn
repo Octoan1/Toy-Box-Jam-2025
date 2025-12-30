@@ -86,7 +86,6 @@ offset_top = -12.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
-value = 20.0
 texture_under = ExtResource("2_nh7fr")
 texture_progress = ExtResource("2_nh7fr")
 tint_under = Color(0.2231029, 0.2231029, 0.22310287, 1)
@@ -164,12 +163,7 @@ material = SubResource("ShaderMaterial_a4ucr")
 layout_mode = 2
 texture = SubResource("AtlasTexture_vim6w")
 
-[node name="ProgressBarTestTimer" type="Timer" parent="."]
-wait_time = 0.1
-autostart = true
-
 [node name="TimeClockTestTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="timeout" from="ProgressBarTestTimer" to="TopBar/XPProgressBar" method="_on_progress_bar_test_timer_timeout"]
 [connection signal="timeout" from="TimeClockTestTimer" to="TopBar/TimeClock" method="_on_time_clock_test_timer_timeout"]

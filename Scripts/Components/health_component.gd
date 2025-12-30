@@ -12,7 +12,7 @@ func _ready() -> void:
 	
 func damage(attack: Attack):
 	health -= attack.attack_damage
-	print(owner.name + " health is now: "+ str(health))
+	#print(owner.name + " health is now: "+ str(health))
 	
 	if health <= 0:
 		#damaged.emit(attack.attack_damage)

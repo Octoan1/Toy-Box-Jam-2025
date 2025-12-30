@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var SPEED: int = 15
 
-@export var player: Node2D
+@export var player: CharacterBody2D
 @export var can_follow: bool = true
 
 @onready var sprite: Sprite2D = $Sprite2D
@@ -38,4 +38,6 @@ func _process(_delta: float) -> void:
 
 func _on_chicken_died():
 	print(self.name + " died")
+	player.get_node("LevelComponent").add_xp(10)
+	print(player.get_node("LevelComponent").level)
 	queue_free()
