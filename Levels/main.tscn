@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c4fgfy2i4ib8f"]
+[gd_scene load_steps=14 format=4 uid="uid://c4fgfy2i4ib8f"]
 
 [ext_resource type="PackedScene" uid="uid://2aabi06icyr6" path="res://Entities/Player/player.tscn" id="1_oj8hd"]
 [ext_resource type="Script" uid="uid://57y8nwtgeahl" path="res://Levels/main.gd" id="1_ovrsl"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://csuetsy6a0aeu" path="res://UI/StartScreen/start_menu.tscn" id="5_he5fp"]
 [ext_resource type="PackedScene" uid="uid://bwcsb7r1axh3" path="res://UI/DeathScreen/death_screen.tscn" id="6_34bfm"]
 [ext_resource type="Script" uid="uid://7rwiifhbxjki" path="res://UI/ui.gd" id="6_hbaan"]
+[ext_resource type="PackedScene" uid="uid://fhd5unfpd876" path="res://UI/GameHUD/gameplay_hud.tscn" id="6_mykqc"]
 [ext_resource type="PackedScene" uid="uid://3fp58106skjj" path="res://Entities/Weapons/MagicMissle/magic_missle.tscn" id="10_u05pv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lwy2l"]
@@ -281,7 +282,12 @@ script = ExtResource("1_ovrsl")
 [node name="UI" type="Node" parent="."]
 script = ExtResource("6_hbaan")
 
+[node name="GameplayHud" type="CanvasLayer" parent="UI"]
+
+[node name="GameplayHUD" parent="UI/GameplayHud" instance=ExtResource("6_mykqc")]
+
 [node name="Overlay" parent="UI" instance=ExtResource("4_nj2yk")]
+visible = false
 
 [node name="DeathScreenLayer" parent="UI" instance=ExtResource("6_34bfm")]
 visible = false
@@ -316,5 +322,3 @@ position = Vector2(64, 64)
 [node name="WeaponOrbit" parent="Player" instance=ExtResource("3_7pswh")]
 
 [node name="MagicMissle" parent="Player" instance=ExtResource("10_u05pv")]
-process_mode = 4
-visible = false

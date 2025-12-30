@@ -1,0 +1,175 @@
+[gd_scene load_steps=18 format=3 uid="uid://fhd5unfpd876"]
+
+[ext_resource type="Texture2D" uid="uid://vneo5yc106lh" path="res://UI/GameHUD/Assets/bg_bar.png" id="1_47hi2"]
+[ext_resource type="Texture2D" uid="uid://xdcdooq63cyn" path="res://UI/GameHUD/Assets/xp_bar.png" id="2_nh7fr"]
+[ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://UI/outline.gdshader" id="3_gsr3m"]
+[ext_resource type="Script" uid="uid://dnmgekfm8jpib" path="res://UI/GameHUD/xp_progress_bar.gd" id="3_krdh5"]
+[ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/Tilesets/tbj2_sprites_transparent_padding.png" id="4_krdh5"]
+[ext_resource type="Theme" uid="uid://b56py6kropip6" path="res://UI/theme.tres" id="5_rkqha"]
+[ext_resource type="Script" uid="uid://cwmirw8eovdec" path="res://UI/GameHUD/time_clock_test.gd" id="6_ckjjw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wllst"]
+shader = ExtResource("3_gsr3m")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttgx4"]
+atlas = ExtResource("4_krdh5")
+region = Rect2(0, 40, 10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apo7m"]
+shader = ExtResource("3_gsr3m")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+shader_parameter/line_thickness = 1.0000000475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1hom"]
+shader = ExtResource("3_gsr3m")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0pdk"]
+atlas = ExtResource("4_krdh5")
+region = Rect2(100, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6xl0"]
+resource_local_to_scene = true
+atlas = ExtResource("4_krdh5")
+region = Rect2(100, 30, 10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k71qr"]
+shader = ExtResource("3_gsr3m")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx2ym"]
+atlas = ExtResource("4_krdh5")
+region = Rect2(10, 40, 10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a4ucr"]
+shader = ExtResource("3_gsr3m")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vim6w"]
+atlas = ExtResource("4_krdh5")
+region = Rect2(150, 120, 10, 10)
+
+[node name="GameplayHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+
+[node name="Background" type="TextureRect" parent="TopBar"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 24.0
+texture = ExtResource("1_47hi2")
+stretch_mode = 4
+
+[node name="XPProgressBar" type="TextureProgressBar" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 20.0
+texture_under = ExtResource("2_nh7fr")
+texture_progress = ExtResource("2_nh7fr")
+tint_under = Color(0.2231029, 0.2231029, 0.22310287, 1)
+script = ExtResource("3_krdh5")
+
+[node name="HeartsHBoxContainer" type="HBoxContainer" parent="TopBar"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 2.0
+offset_right = 44.0
+offset_bottom = 12.0
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="TopBar/HeartsHBoxContainer"]
+material = SubResource("ShaderMaterial_wllst")
+layout_mode = 2
+texture = SubResource("AtlasTexture_ttgx4")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="TopBar/HeartsHBoxContainer"]
+material = SubResource("ShaderMaterial_wllst")
+layout_mode = 2
+texture = SubResource("AtlasTexture_ttgx4")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="TopBar/HeartsHBoxContainer"]
+material = SubResource("ShaderMaterial_wllst")
+layout_mode = 2
+texture = SubResource("AtlasTexture_ttgx4")
+stretch_mode = 2
+
+[node name="TimeClock" type="Label" parent="TopBar"]
+material = SubResource("ShaderMaterial_apo7m")
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
+offset_top = 3.0
+offset_right = -10.0
+offset_bottom = 13.0
+grow_horizontal = 0
+theme = ExtResource("5_rkqha")
+text = "0:00"
+vertical_alignment = 1
+script = ExtResource("6_ckjjw")
+
+[node name="WeaponsHBoxContainer" type="HBoxContainer" parent="TopBar"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 21.0
+offset_right = 56.0
+offset_bottom = 31.0
+
+[node name="Weapon1" type="TextureRect" parent="TopBar/WeaponsHBoxContainer"]
+material = SubResource("ShaderMaterial_r1hom")
+layout_mode = 2
+texture = SubResource("AtlasTexture_l0pdk")
+stretch_mode = 4
+
+[node name="Weapon2" type="TextureRect" parent="TopBar/WeaponsHBoxContainer"]
+material = SubResource("ShaderMaterial_r1hom")
+layout_mode = 2
+texture = SubResource("AtlasTexture_l6xl0")
+stretch_mode = 4
+
+[node name="Weapon3" type="TextureRect" parent="TopBar/WeaponsHBoxContainer"]
+material = SubResource("ShaderMaterial_k71qr")
+layout_mode = 2
+texture = SubResource("AtlasTexture_sx2ym")
+
+[node name="Weapon4" type="TextureRect" parent="TopBar/WeaponsHBoxContainer"]
+material = SubResource("ShaderMaterial_a4ucr")
+layout_mode = 2
+texture = SubResource("AtlasTexture_vim6w")
+
+[node name="ProgressBarTestTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="TimeClockTestTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ProgressBarTestTimer" to="TopBar/XPProgressBar" method="_on_progress_bar_test_timer_timeout"]
+[connection signal="timeout" from="TimeClockTestTimer" to="TopBar/TimeClock" method="_on_time_clock_test_timer_timeout"]

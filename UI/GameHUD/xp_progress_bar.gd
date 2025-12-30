@@ -1,5 +1,4 @@
-extends ProgressBar
-
+extends TextureProgressBar
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,7 +12,8 @@ func _process(_delta: float) -> void:
 
 var test = 0 
 var inc = 1
-func _on_progress_bar_test_timer_timout() -> void:
+
+func _on_progress_bar_test_timer_timeout() -> void:
 	if test > 110:
 		#test = 0
 		inc = -1
@@ -23,7 +23,3 @@ func _on_progress_bar_test_timer_timout() -> void:
 		
 	test += inc
 	self.value = test
-
-
-func _on_progress_bar_test_timer_timeout() -> void:
-	pass # Replace with function body.
