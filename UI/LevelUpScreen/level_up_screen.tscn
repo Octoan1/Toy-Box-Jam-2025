@@ -1,0 +1,142 @@
+[gd_scene load_steps=10 format=3 uid="uid://ce137wukr464u"]
+
+[ext_resource type="Texture2D" uid="uid://olt8rfvg54kt" path="res://UI/LevelUpScreen/bg.png" id="1_a8k3g"]
+[ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://UI/outline.gdshader" id="2_ep6ri"]
+[ext_resource type="Theme" uid="uid://b56py6kropip6" path="res://UI/theme.tres" id="3_dtw8e"]
+[ext_resource type="Texture2D" uid="uid://b8i7cilib0ncb" path="res://UI/LevelUpScreen/button.png" id="4_ep6ri"]
+[ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/Tilesets/tbj2_sprites_transparent_padding.png" id="4_iekym"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnfqa"]
+shader = ExtResource("2_ep6ri")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dtw8e"]
+shader = ExtResource("2_ep6ri")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxnnp"]
+shader = ExtResource("2_ep6ri")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxf00"]
+atlas = ExtResource("4_iekym")
+region = Rect2(100, 10, 10, 10)
+
+[node name="LevelUpScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.67058825)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 112.0
+offset_bottom = 104.0
+texture = ExtResource("1_a8k3g")
+
+[node name="Label" type="Label" parent="."]
+material = SubResource("ShaderMaterial_vnfqa")
+layout_mode = 0
+offset_left = 25.0
+offset_top = 40.0
+offset_right = 106.0
+offset_bottom = 63.0
+theme = ExtResource("3_dtw8e")
+text = "Level UP!"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+material = SubResource("ShaderMaterial_dtw8e")
+layout_mode = 0
+offset_left = 30.0
+offset_top = 56.0
+offset_right = 48.0
+offset_bottom = 74.0
+texture_normal = ExtResource("4_ep6ri")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="TextureButton"]
+material = SubResource("ShaderMaterial_cxnnp")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_bxf00")
+stretch_mode = 3
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+material = SubResource("ShaderMaterial_dtw8e")
+layout_mode = 0
+offset_left = 55.0
+offset_top = 56.0
+offset_right = 73.0
+offset_bottom = 74.0
+texture_normal = ExtResource("4_ep6ri")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="TextureButton2"]
+material = SubResource("ShaderMaterial_cxnnp")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_bxf00")
+stretch_mode = 3
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+material = SubResource("ShaderMaterial_dtw8e")
+layout_mode = 0
+offset_left = 79.0
+offset_top = 56.0
+offset_right = 97.0
+offset_bottom = 74.0
+texture_normal = ExtResource("4_ep6ri")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="TextureButton3"]
+material = SubResource("ShaderMaterial_cxnnp")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_bxf00")
+stretch_mode = 3
