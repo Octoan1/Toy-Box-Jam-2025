@@ -5,7 +5,7 @@
 
 [node name="WeaponOrbit" type="Node2D"]
 script = ExtResource("1_mh0ky")
-speed = 1
+total = 4
 type = ExtResource("2_eyc8s")
 
 [node name="SpikyBall" parent="." instance=ExtResource("2_eyc8s")]

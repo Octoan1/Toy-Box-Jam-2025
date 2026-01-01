@@ -1,7 +1,7 @@
 extends Node2D
 
 @export_category("Weapon Settings")
-@export var amount: int = 1
+@export var total: int = 1
 @export var speed: int = 5
 @export var attack_damage: int = 1
 @export var size: float = 1
@@ -15,11 +15,11 @@ var balls: Array[Node2D]= []
 var t = 0  # keeps track of time
 
 func _ready() -> void:
-	for i in amount: 
-		var ball := type.instantiate()
-		ball.scale = Vector2.ONE * size
-		add_child(ball)
-		balls.append(ball)
+	# spawn balls
+	add_ball(total)
+
+		
+	get_node("/root/Main/Player/LevelComponent").level_up.connect(on_level_up)
 
 
 func _process(delta: float) -> void:
@@ -31,3 +31,18 @@ func _process(delta: float) -> void:
 		balls[i].position.x = radius * sin(angle)
 		balls[i].position.y = radius * cos(angle)
 	
+func on_level_up(_level: int) -> void:
+	total += 1
+	@warning_ignore("narrowing_conversion")
+	speed *= 1.10
+	
+	add_ball(1)
+
+	
+func add_ball(amount: int) -> void:
+	for i in amount:
+		var ball := type.instantiate()
+		ball.scale = Vector2.ONE * size
+		call_deferred("add_child", ball)
+		
+		balls.append(ball)

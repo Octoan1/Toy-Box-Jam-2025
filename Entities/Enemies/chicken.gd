@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if not player: 
-		print("Error: no player")
+		print("Error: ", self.name, " - has no player")
 		return 
 		
 	if not can_follow:

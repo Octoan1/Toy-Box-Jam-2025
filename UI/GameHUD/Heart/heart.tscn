@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://dlourrt3j4xwr"]
+
+[ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://UI/outline.gdshader" id="1_bt212"]
+[ext_resource type="Script" uid="uid://c4ps2u23epbvw" path="res://UI/GameHUD/Heart/heart.gd" id="1_l4u3t"]
+
+[sub_resource type="Shader" id="Shader_wllst"]
+code = "shader_type canvas_item;
+
+uniform vec4 line_color : source_color = vec4(1.0);
+uniform float line_thickness : hint_range(0, 10) = 1.0;
+
+const vec2 OFFSETS[8] = {
+	vec2(-1, -1), vec2(-1, 0), vec2(-1, 1), vec2(0, -1), vec2(0, 1),
+	vec2(1, -1), vec2(1, 0), vec2(1, 1)
+};
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+	float outline = 0.0;
+
+	for (int i = 0; i < OFFSETS.length(); i++) {
+		outline += texture(TEXTURE, UV + size * OFFSETS[i]).a;
+	}
+	outline = min(outline, 1.0);
+
+	vec4 color = texture(TEXTURE, UV); // multiply by the color to add modulate
+	color *= COLOR;
+	
+	// Blend sprite and outline
+	vec4 final_color = mix(color, line_color, outline - color.a);
+	
+	COLOR = final_color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ttgx4"]
+shader = SubResource("Shader_wllst")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l4u3t"]
+load_path = "res://.godot/imported/tbj2_sprites_transparent_padding.png-2292c98a2b6ade42be177f97783f8cc5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ox4f"]
+atlas = SubResource("CompressedTexture2D_l4u3t")
+region = Rect2(0, 40, 10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rkqha"]
+shader = ExtResource("1_bt212")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ckjjw"]
+load_path = "res://.godot/imported/tbj2_sprites_transparent_padding.png-2292c98a2b6ade42be177f97783f8cc5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttgx4"]
+atlas = SubResource("CompressedTexture2D_ckjjw")
+region = Rect2(0, 40, 10, 10)
+
+[node name="Heart1" type="Control"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 3
+anchor_right = 0.078125
+anchor_bottom = 0.078125
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l4u3t")
+metadata/_edit_use_anchors_ = true
+
+[node name="Empty" type="TextureRect" parent="."]
+modulate = Color(0.21950102, 0.21950102, 0.21950102, 1)
+material = SubResource("ShaderMaterial_ttgx4")
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+texture = SubResource("AtlasTexture_7ox4f")
+stretch_mode = 2
+
+[node name="Full" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_rkqha")
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+texture = SubResource("AtlasTexture_ttgx4")
+stretch_mode = 2

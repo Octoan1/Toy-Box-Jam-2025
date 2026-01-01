@@ -1,11 +1,11 @@
-extends Node2D
+extends Node
 class_name HealthComponent
 
 @export var MAX_HEALTH := 10
 var health : float
 
 signal died
-#signal damaged
+signal damaged
 
 func _ready() -> void:
 	health = MAX_HEALTH
@@ -13,6 +13,7 @@ func _ready() -> void:
 func damage(attack: Attack):
 	health -= attack.attack_damage
 	#print(owner.name + " health is now: "+ str(health))
+	damaged.emit()
 	
 	if health <= 0:
 		#damaged.emit(attack.attack_damage)

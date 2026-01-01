@@ -18,7 +18,7 @@ void fragment() {
 	outline = min(outline, 1.0);
 
 	vec4 color = texture(TEXTURE, UV); // multiply by the color to add modulate
-	//color *= COLOR;
+	color *= COLOR;
 	
 	// Blend sprite and outline
 	vec4 final_color = mix(color, line_color, outline - color.a);

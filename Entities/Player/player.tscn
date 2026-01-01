@@ -28,7 +28,7 @@ SPEED = 50
 script = ExtResource("2_4wf4l")
 metadata/_custom_type_script = "uid://bhwx8pq5c1r24"
 
-[node name="HealthComponent" type="Node2D" parent="."]
+[node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_tekja")
 MAX_HEALTH = 3
 metadata/_custom_type_script = "uid://bykeu84f0bmpx"

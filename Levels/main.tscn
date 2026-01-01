@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c4fgfy2i4ib8f"]
+[gd_scene load_steps=15 format=4 uid="uid://c4fgfy2i4ib8f"]
 
 [ext_resource type="PackedScene" uid="uid://2aabi06icyr6" path="res://Entities/Player/player.tscn" id="1_oj8hd"]
 [ext_resource type="Script" uid="uid://57y8nwtgeahl" path="res://Levels/main.gd" id="1_ovrsl"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://7rwiifhbxjki" path="res://UI/ui.gd" id="6_hbaan"]
 [ext_resource type="PackedScene" uid="uid://fhd5unfpd876" path="res://UI/GameHUD/gameplay_hud.tscn" id="6_mykqc"]
 [ext_resource type="PackedScene" uid="uid://3fp58106skjj" path="res://Entities/Weapons/MagicMissle/magic_missle.tscn" id="10_u05pv"]
+[ext_resource type="Script" uid="uid://8wd3k3kuoxsd" path="res://Entities/Enemies/chicken_spawner.gd" id="12_hilkn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lwy2l"]
 texture = ExtResource("2_gnif3")
@@ -320,7 +321,18 @@ position = Vector2(64, 64)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="WeaponOrbit" parent="Player" instance=ExtResource("3_7pswh")]
+amount = 4
+speed = 3
 
 [node name="MagicMissle" parent="Player" instance=ExtResource("10_u05pv")]
 process_mode = 4
 visible = false
+
+[node name="ChickenSpawner" type="Timer" parent="." node_paths=PackedStringArray("player")]
+wait_time = 1.5
+autostart = true
+script = ExtResource("12_hilkn")
+player = NodePath("../Player")
+enemy_scene = ExtResource("3_lwy2l")
+
+[connection signal="timeout" from="ChickenSpawner" to="ChickenSpawner" method="_on_timeout"]

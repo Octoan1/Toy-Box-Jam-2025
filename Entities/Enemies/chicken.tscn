@@ -26,7 +26,7 @@ collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_v8ddq")
 
-[node name="HealthComponent" type="Node2D" parent="."]
+[node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_f1p20")
 MAX_HEALTH = 5
 metadata/_custom_type_script = "uid://bykeu84f0bmpx"
