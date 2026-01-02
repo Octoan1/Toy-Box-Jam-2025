@@ -9,6 +9,7 @@ signal player_died
 
 func _ready() -> void:
 	health_component.died.connect(_on_player_died)
+	health_component.damaged.connect(_on_player_damaged)
 
 func _physics_process(_delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -31,3 +32,8 @@ func _on_player_died():
 	print("Player died")
 	$/root/Main/UI/DeathScreenLayer/DeathScreen.show()
 	player_died.emit()
+	
+func _on_player_damaged() -> void:
+	get_node("Damaged").visible = true
+	await get_tree().create_timer(0.1).timeout# await timer timout 0.1 sec
+	get_node("Damaged").visible = false

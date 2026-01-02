@@ -41,3 +41,9 @@ func _on_chicken_died():
 	player.get_node("LevelComponent").add_xp(10)
 	print(player.get_node("LevelComponent").level)
 	queue_free()
+
+
+func _on_chicken_damaged() -> void:
+	get_node("DamagedSprite2D").visible = true
+	await get_tree().create_timer(0.1).timeout# await timer timout 0.1 sec
+	get_node("DamagedSprite2D").visible = false
