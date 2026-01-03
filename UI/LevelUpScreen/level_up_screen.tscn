@@ -1,19 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://ce137wukr464u"]
+[gd_scene load_steps=13 format=3 uid="uid://ce137wukr464u"]
 
 [ext_resource type="Texture2D" uid="uid://olt8rfvg54kt" path="res://UI/LevelUpScreen/bg.png" id="1_a8k3g"]
+[ext_resource type="Script" uid="uid://w6al5irocwp7" path="res://UI/LevelUpScreen/level_up_screen.gd" id="1_dtw8e"]
 [ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://UI/outline.gdshader" id="2_ep6ri"]
 [ext_resource type="Theme" uid="uid://b56py6kropip6" path="res://UI/theme.tres" id="3_dtw8e"]
 [ext_resource type="Texture2D" uid="uid://b8i7cilib0ncb" path="res://UI/LevelUpScreen/button.png" id="4_ep6ri"]
 [ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/Tilesets/tbj2_sprites_transparent_padding.png" id="4_iekym"]
+[ext_resource type="Shader" uid="uid://cbe5pah3nq00i" path="res://UI/test.gdshader" id="5_iekym"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vnfqa"]
 shader = ExtResource("2_ep6ri")
 shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
 shader_parameter/line_thickness = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dtw8e"]
-shader = ExtResource("2_ep6ri")
-shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iekym"]
+shader = ExtResource("5_iekym")
+shader_parameter/line_color = Color(0, 1, 1, 1)
 shader_parameter/line_thickness = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cxnnp"]
@@ -23,7 +25,12 @@ shader_parameter/line_thickness = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bxf00"]
 atlas = ExtResource("4_iekym")
-region = Rect2(100, 10, 10, 10)
+region = Rect2(100, 30, 10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dtw8e"]
+shader = ExtResource("2_ep6ri")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+shader_parameter/line_thickness = 1.0
 
 [node name="LevelUpScreen" type="Control"]
 layout_mode = 3
@@ -32,6 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dtw8e")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -43,6 +51,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.67058825)
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = 24.0
@@ -61,7 +70,7 @@ theme = ExtResource("3_dtw8e")
 text = "Level Up!"
 
 [node name="TextureButton" type="TextureButton" parent="."]
-material = SubResource("ShaderMaterial_dtw8e")
+material = SubResource("ShaderMaterial_iekym")
 layout_mode = 0
 offset_left = 30.0
 offset_top = 56.0
