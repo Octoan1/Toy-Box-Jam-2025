@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpxbf4ujg3wnb"]
+
+[ext_resource type="Script" uid="uid://csqa5btkh0a1s" path="res://Entities/Weapons/Bomb/bomb.gd" id="1_412q2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_412q2"]
+
+[node name="Bomb" type="Node2D"]
+script = ExtResource("1_412q2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_412q2")

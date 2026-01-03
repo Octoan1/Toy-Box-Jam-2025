@@ -12,7 +12,7 @@ func _ready() -> void:
 func _on_xp_changed(current, max_xp) -> void:
 	self.max_value = max_xp
 	self.value = current
-	print("xp: ", current, " out of max:", max)
+	print("xp: ", current, " out of max:", max_xp)
 
 func _on_level_up(level) -> void:
 	print("Level up: ", level)

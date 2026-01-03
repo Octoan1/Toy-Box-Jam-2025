@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://fhd5unfpd876"]
+[gd_scene load_steps=17 format=3 uid="uid://fhd5unfpd876"]
 
 [ext_resource type="Texture2D" uid="uid://vneo5yc106lh" path="res://UI/GameHUD/Assets/bg_bar.png" id="1_47hi2"]
 [ext_resource type="Texture2D" uid="uid://xdcdooq63cyn" path="res://UI/GameHUD/Assets/xp_bar.png" id="2_nh7fr"]
@@ -12,17 +12,13 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apo7m"]
 shader = ExtResource("3_gsr3m")
-shader_parameter/line_color = Color(0.9529412, 0.9019608, 0.8666667, 1)
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
 shader_parameter/line_thickness = 1.0000000475
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r1hom"]
 shader = ExtResource("3_gsr3m")
 shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
 shader_parameter/line_thickness = 1.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l0pdk"]
-atlas = ExtResource("4_krdh5")
-region = Rect2(100, 10, 10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6xl0"]
 resource_local_to_scene = true
@@ -45,7 +41,7 @@ shader_parameter/line_thickness = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vim6w"]
 atlas = ExtResource("4_krdh5")
-region = Rect2(150, 120, 10, 10)
+region = Rect2(150, 40, 10, 10)
 
 [node name="GameplayHUD" type="Control"]
 layout_mode = 3
@@ -125,12 +121,6 @@ offset_left = 3.0
 offset_top = 21.0
 offset_right = 56.0
 offset_bottom = 31.0
-
-[node name="Weapon1" type="TextureRect" parent="TopBar/WeaponsHBoxContainer"]
-material = SubResource("ShaderMaterial_r1hom")
-layout_mode = 2
-texture = SubResource("AtlasTexture_l0pdk")
-stretch_mode = 4
 
 [node name="Weapon2" type="TextureRect" parent="TopBar/WeaponsHBoxContainer"]
 material = SubResource("ShaderMaterial_r1hom")

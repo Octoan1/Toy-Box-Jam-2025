@@ -37,14 +37,6 @@ texture = ExtResource("1_0h8xp")
 region_enabled = true
 region_rect = Rect2(30, 140, 10, 10)
 
-[node name="DamagedSprite2D" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 0, 0, 1)
-material = SubResource("ShaderMaterial_3wchp")
-texture = ExtResource("1_0h8xp")
-region_enabled = true
-region_rect = Rect2(30, 140, 10, 10)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_3f6lr")

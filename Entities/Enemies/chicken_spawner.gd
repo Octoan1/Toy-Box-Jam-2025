@@ -15,12 +15,10 @@ func _on_timeout() -> void:
 	var dir := Vector2.RIGHT.rotated(randf() * 2 * PI)
 	var v := dir * 128
 	enemy.global_position = player.global_position + v
-	get_parent().add_child(enemy)
+	add_child(enemy)
 	
 	if time_scale > blocker: 
 		time_scale -= 10
 		wait_time = wait_time * 0.95
 		blocker /= 0.95
 	time_scale += 1
-	print("ts", time_scale)
-	print("blocker", blocker)

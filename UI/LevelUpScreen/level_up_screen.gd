@@ -19,9 +19,7 @@ func _on_weapon_button_1_pressed() -> void:
 	get_tree().paused = false
 
 func on_level_up(_level: int) -> void:
-	print("test")
 	get_parent().show()
-	print(owner.name)
-	owner.show()
+	#owner.show()
 	self.show()
 	get_tree().paused = true
