@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjdsn8khtsi4d"]
+
+[ext_resource type="Script" uid="uid://coqc8vsw6wgkf" path="res://Entities/Weapons/GunWeapon/Bullet/bullet.gd" id="1_822hu"]
+[ext_resource type="Material" uid="uid://cytwdfauwd2h0" path="res://Scripts/outline_mat.tres" id="2_822hu"]
+[ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/Tilesets/tbj2_sprites_transparent_padding.png" id="2_dpqbw"]
+[ext_resource type="Script" uid="uid://3pairqmke32u" path="res://Scripts/Components/hitbox_component.gd" id="3_dpqbw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_822hu"]
+radius = 5.0
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_822hu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_822hu")
+texture = ExtResource("2_dpqbw")
+region_enabled = true
+region_rect = Rect2(90, 110, 10, 10)
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 32
+script = ExtResource("3_dpqbw")
+metadata/_custom_type_script = "uid://3pairqmke32u"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_822hu")
+debug_color = Color(0.63934726, 0, 0.3250287, 0.41960785)
+
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hit"]

@@ -11,6 +11,8 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	health_component.died.connect(_on_chicken_died)
+	add_to_group("enemies")
+
 
 
 func _process(_delta: float) -> void:

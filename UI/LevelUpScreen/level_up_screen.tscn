@@ -210,3 +210,4 @@ texture = SubResource("AtlasTexture_vnfqa")
 stretch_mode = 3
 
 [connection signal="pressed" from="HBoxContainer/WeaponButton1" to="." method="_on_weapon_button_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/WeaponButton2" to="." method="_on_weapon_button_2_pressed"]

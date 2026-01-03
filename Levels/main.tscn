@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://c4fgfy2i4ib8f"]
+[gd_scene load_steps=18 format=4 uid="uid://c4fgfy2i4ib8f"]
 
 [ext_resource type="PackedScene" uid="uid://2aabi06icyr6" path="res://Entities/Player/player.tscn" id="1_oj8hd"]
 [ext_resource type="Script" uid="uid://57y8nwtgeahl" path="res://Levels/main.gd" id="1_ovrsl"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://3fp58106skjj" path="res://Entities/Weapons/MagicMissle/magic_missle.tscn" id="10_u05pv"]
 [ext_resource type="Script" uid="uid://8wd3k3kuoxsd" path="res://Entities/Enemies/chicken_spawner.gd" id="12_hilkn"]
 [ext_resource type="PackedScene" uid="uid://dwbcm5g7xrqp2" path="res://Entities/Weapons/Bomb/bomb_weapon.tscn" id="14_3lhg3"]
+[ext_resource type="PackedScene" uid="uid://df7sf4ead3yg2" path="res://Entities/Weapons/GunWeapon/gun_weapon.tscn" id="15_wgfyn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lwy2l"]
 texture = ExtResource("2_gnif3")
@@ -315,22 +316,25 @@ script = ExtResource("12_hilkn")
 player = NodePath("../Player")
 enemy_scene = ExtResource("3_lwy2l")
 
-[node name="Chicken" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
-player = NodePath("../Player")
+[node name="EnemyContainer" type="Node" parent="."]
 
-[node name="Chicken2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
+[node name="Chicken" parent="EnemyContainer" node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
+player = NodePath("../../Player")
+
+[node name="Chicken2" parent="EnemyContainer" node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
 position = Vector2(97, 64)
-player = NodePath("../Player")
+player = NodePath("../../Player")
 
-[node name="Chicken3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
+[node name="Chicken3" parent="EnemyContainer" node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
 position = Vector2(-30, 63)
-player = NodePath("../Player")
+player = NodePath("../../Player")
 
-[node name="Chicken4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
+[node name="Chicken4" parent="EnemyContainer" node_paths=PackedStringArray("player") instance=ExtResource("3_lwy2l")]
 position = Vector2(101, 108)
-player = NodePath("../Player")
+player = NodePath("../../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_oj8hd")]
+z_index = 1
 position = Vector2(64, 64)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -338,13 +342,17 @@ position = Vector2(64, 64)
 [node name="WeaponOrbit" parent="Player" instance=ExtResource("3_7pswh")]
 process_mode = 4
 visible = false
-speed = 3
 
 [node name="MagicMissle" parent="Player" instance=ExtResource("10_u05pv")]
 process_mode = 4
 visible = false
 
 [node name="BombWeapon" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("14_3lhg3")]
+process_mode = 4
+visible = false
 player = NodePath("..")
+
+[node name="GunWeapon" parent="Player" instance=ExtResource("15_wgfyn")]
+amount = 4
 
 [connection signal="timeout" from="ChickenSpawner" to="ChickenSpawner" method="_on_timeout"]

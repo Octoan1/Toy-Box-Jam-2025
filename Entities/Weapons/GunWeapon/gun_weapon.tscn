@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://df7sf4ead3yg2"]
+
+[ext_resource type="Script" uid="uid://cpai1juf0qw20" path="res://Entities/Weapons/GunWeapon/gun_weapon.gd" id="1_ope6l"]
+[ext_resource type="PackedScene" uid="uid://c55yu6ts0pd2u" path="res://Entities/Weapons/GunWeapon/Gun/gun.tscn" id="2_mef3y"]
+
+[node name="GunWeapon" type="Node2D"]
+script = ExtResource("1_ope6l")
+type = ExtResource("2_mef3y")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dpxbf4ujg3wnb"]
+[gd_scene load_steps=12 format=3 uid="uid://dpxbf4ujg3wnb"]
 
 [ext_resource type="Script" uid="uid://csqa5btkh0a1s" path="res://Entities/Weapons/Bomb/bomb.gd" id="1_412q2"]
 [ext_resource type="Material" uid="uid://cytwdfauwd2h0" path="res://Scripts/outline_mat.tres" id="2_ftaha"]
@@ -6,10 +6,6 @@
 [ext_resource type="Script" uid="uid://3pairqmke32u" path="res://Scripts/Components/hitbox_component.gd" id="3_cwqql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0o3v8"]
-atlas = ExtResource("2_jt2g5")
-region = Rect2(0, 0, 18, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cwqql"]
 atlas = ExtResource("2_jt2g5")
 region = Rect2(0, 0, 18, 18)
 
@@ -41,9 +37,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cwqql")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ftaha")
 }, {
 "duration": 1.0,
@@ -69,7 +62,6 @@ script = ExtResource("1_412q2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_ftaha")
 sprite_frames = SubResource("SpriteFrames_412q2")
-animation = &"explode"
 
 [node name="ExplosionHitbox" type="Area2D" parent="."]
 visible = false

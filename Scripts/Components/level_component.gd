@@ -14,7 +14,7 @@ func add_xp(amount: int):
 	xp_changed.emit(xp, xp_to_next)
 
 	# handle leveling up 
-	if xp > xp_to_next:
+	if xp >= xp_to_next:
 		xp -= xp_to_next
 		level += 1
 		

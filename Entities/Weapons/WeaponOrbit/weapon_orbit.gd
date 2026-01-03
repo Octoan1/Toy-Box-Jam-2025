@@ -28,8 +28,8 @@ func _process(delta: float) -> void:
 	var offset = 2*PI / balls.size()
 	for i in balls.size():
 		var angle = t + offset * i
-		balls[i].position.x = radius * sin(angle)
-		balls[i].position.y = radius * cos(angle)
+		balls[i].position.x = radius * cos(angle)
+		balls[i].position.y = radius * sin(angle)
 	
 func on_upgrade() -> void:
 	amount += 1
