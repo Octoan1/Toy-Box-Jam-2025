@@ -44,5 +44,5 @@ func _on_chicken_died():
 
 func _on_chicken_damaged() -> void:
 	sprite.modulate = Color("860000ff")
-	await get_tree().create_timer(0.1).timeout# await timer timout 0.1 sec
+	await get_tree().create_timer(0.25).timeout# await timer timout 0.1 sec
 	sprite.modulate = Color.WHITE

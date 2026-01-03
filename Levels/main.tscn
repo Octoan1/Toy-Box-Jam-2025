@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://c4fgfy2i4ib8f"]
+[gd_scene load_steps=17 format=4 uid="uid://c4fgfy2i4ib8f"]
 
 [ext_resource type="PackedScene" uid="uid://2aabi06icyr6" path="res://Entities/Player/player.tscn" id="1_oj8hd"]
 [ext_resource type="Script" uid="uid://57y8nwtgeahl" path="res://Levels/main.gd" id="1_ovrsl"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ce137wukr464u" path="res://UI/LevelUpScreen/level_up_screen.tscn" id="7_5mxy1"]
 [ext_resource type="PackedScene" uid="uid://3fp58106skjj" path="res://Entities/Weapons/MagicMissle/magic_missle.tscn" id="10_u05pv"]
 [ext_resource type="Script" uid="uid://8wd3k3kuoxsd" path="res://Entities/Enemies/chicken_spawner.gd" id="12_hilkn"]
+[ext_resource type="PackedScene" uid="uid://dwbcm5g7xrqp2" path="res://Entities/Weapons/Bomb/bomb_weapon.tscn" id="14_3lhg3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lwy2l"]
 texture = ExtResource("2_gnif3")
@@ -335,10 +336,15 @@ position = Vector2(64, 64)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="WeaponOrbit" parent="Player" instance=ExtResource("3_7pswh")]
+process_mode = 4
+visible = false
 speed = 3
 
 [node name="MagicMissle" parent="Player" instance=ExtResource("10_u05pv")]
 process_mode = 4
 visible = false
+
+[node name="BombWeapon" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("14_3lhg3")]
+player = NodePath("..")
 
 [connection signal="timeout" from="ChickenSpawner" to="ChickenSpawner" method="_on_timeout"]
