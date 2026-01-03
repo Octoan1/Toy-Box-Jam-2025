@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://biyc6tro7owbe"]
+
+[ext_resource type="Script" uid="uid://b6mwnqs67w7df" path="res://UI/LevelUpScreen/level_up_button.gd" id="2_3o0up"]
+
+[sub_resource type="Shader" id="Shader_m2ie2"]
+code = "shader_type canvas_item;
+
+uniform vec4 line_color : source_color = vec4(1.0);
+uniform float line_thickness : hint_range(0, 10) = 1.0;
+varying vec4 modulate_color;
+
+
+const vec2 OFFSETS[8] = {
+	vec2(-1, -1), vec2(-1, 0), vec2(-1, 1), vec2(0, -1), vec2(0, 1),
+	vec2(1, -1), vec2(1, 0), vec2(1, 1)
+};
+
+void vertex() {
+	modulate_color = COLOR;
+}
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+	float outline = 0.0;
+
+	for (int i = 0; i < OFFSETS.length(); i++) {
+		outline += texture(TEXTURE, UV + size * OFFSETS[i]).a;
+	}
+	outline = min(outline, 1.0);
+
+	vec4 color = texture(TEXTURE, UV); // multiply by the color to add modulate
+	color *= modulate_color;
+
+	// Blend sprite and outline
+	vec4 final_color = mix(color, line_color, outline - color.a);
+
+	COLOR = final_color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1t5wk"]
+resource_local_to_scene = true
+shader = SubResource("Shader_m2ie2")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0bt3u"]
+load_path = "res://.godot/imported/button.png-2cc20c472e49a9701fb6e50936d54eac.ctex"
+
+[node name="WeaponButton" type="TextureButton"]
+material = SubResource("ShaderMaterial_1t5wk")
+offset_right = 20.0
+offset_bottom = 20.0
+texture_normal = SubResource("CompressedTexture2D_0bt3u")
+stretch_mode = 0
+script = ExtResource("2_3o0up")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

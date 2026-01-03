@@ -1,36 +1,94 @@
-[gd_scene load_steps=13 format=3 uid="uid://ce137wukr464u"]
+[gd_scene load_steps=18 format=3 uid="uid://ce137wukr464u"]
 
 [ext_resource type="Texture2D" uid="uid://olt8rfvg54kt" path="res://UI/LevelUpScreen/bg.png" id="1_a8k3g"]
 [ext_resource type="Script" uid="uid://w6al5irocwp7" path="res://UI/LevelUpScreen/level_up_screen.gd" id="1_dtw8e"]
 [ext_resource type="Shader" uid="uid://e65vspcm5scn" path="res://UI/outline.gdshader" id="2_ep6ri"]
 [ext_resource type="Theme" uid="uid://b56py6kropip6" path="res://UI/theme.tres" id="3_dtw8e"]
-[ext_resource type="Texture2D" uid="uid://b8i7cilib0ncb" path="res://UI/LevelUpScreen/button.png" id="4_ep6ri"]
-[ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/Tilesets/tbj2_sprites_transparent_padding.png" id="4_iekym"]
-[ext_resource type="Shader" uid="uid://cbe5pah3nq00i" path="res://UI/test.gdshader" id="5_iekym"]
+[ext_resource type="PackedScene" uid="uid://biyc6tro7owbe" path="res://UI/LevelUpScreen/weapon_button.tscn" id="5_ep6ri"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vnfqa"]
 shader = ExtResource("2_ep6ri")
 shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
 shader_parameter/line_thickness = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iekym"]
-shader = ExtResource("5_iekym")
-shader_parameter/line_color = Color(0, 1, 1, 1)
+[sub_resource type="Shader" id="Shader_m2ie2"]
+code = "shader_type canvas_item;
+
+uniform vec4 line_color : source_color = vec4(1.0);
+uniform float line_thickness : hint_range(0, 10) = 1.0;
+varying vec4 modulate_color;
+
+
+const vec2 OFFSETS[8] = {
+	vec2(-1, -1), vec2(-1, 0), vec2(-1, 1), vec2(0, -1), vec2(0, 1),
+	vec2(1, -1), vec2(1, 0), vec2(1, 1)
+};
+
+void vertex() {
+	modulate_color = COLOR;
+}
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+	float outline = 0.0;
+
+	for (int i = 0; i < OFFSETS.length(); i++) {
+		outline += texture(TEXTURE, UV + size * OFFSETS[i]).a;
+	}
+	outline = min(outline, 1.0);
+
+	vec4 color = texture(TEXTURE, UV); // multiply by the color to add modulate
+	color *= modulate_color;
+
+	// Blend sprite and outline
+	vec4 final_color = mix(color, line_color, outline - color.a);
+
+	COLOR = final_color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ep6ri"]
+resource_local_to_scene = true
+shader = SubResource("Shader_m2ie2")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
 shader_parameter/line_thickness = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxnnp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_as4m5"]
 shader = ExtResource("2_ep6ri")
 shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
 shader_parameter/line_thickness = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bxf00"]
-atlas = ExtResource("4_iekym")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ep6ri"]
+load_path = "res://.godot/imported/tbj2_sprites_transparent_padding.png-2292c98a2b6ade42be177f97783f8cc5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtw8e"]
+atlas = SubResource("CompressedTexture2D_ep6ri")
 region = Rect2(100, 30, 10, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dtw8e"]
-shader = ExtResource("2_ep6ri")
+resource_local_to_scene = true
+shader = SubResource("Shader_m2ie2")
 shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
 shader_parameter/line_thickness = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x23ig"]
+load_path = "res://.godot/imported/tbj2_sprites_transparent_padding.png-2292c98a2b6ade42be177f97783f8cc5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxnnp"]
+atlas = SubResource("CompressedTexture2D_x23ig")
+region = Rect2(10, 40, 10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iekym"]
+resource_local_to_scene = true
+shader = SubResource("Shader_m2ie2")
+shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iekym"]
+load_path = "res://.godot/imported/tbj2_sprites_transparent_padding.png-2292c98a2b6ade42be177f97783f8cc5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnfqa"]
+atlas = SubResource("CompressedTexture2D_iekym")
+region = Rect2(150, 40, 10, 10)
 
 [node name="LevelUpScreen" type="Control"]
 layout_mode = 3
@@ -51,7 +109,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.67058825)
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = 24.0
@@ -69,18 +126,30 @@ offset_bottom = 63.0
 theme = ExtResource("3_dtw8e")
 text = "Level Up!"
 
-[node name="TextureButton" type="TextureButton" parent="."]
-material = SubResource("ShaderMaterial_iekym")
+[node name="Label2" type="Label" parent="."]
+material = SubResource("ShaderMaterial_vnfqa")
+layout_mode = 0
+offset_left = 28.0
+offset_top = 80.0
+offset_right = 118.0
+offset_bottom = 103.0
+theme = ExtResource("3_dtw8e")
+text = "pick one"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 30.0
-offset_top = 56.0
-offset_right = 48.0
-offset_bottom = 74.0
-texture_normal = ExtResource("4_ep6ri")
-stretch_mode = 0
+offset_top = 44.0
+offset_right = 98.0
+offset_bottom = 84.0
 
-[node name="TextureRect" type="TextureRect" parent="TextureButton"]
-material = SubResource("ShaderMaterial_cxnnp")
+[node name="WeaponButton1" parent="HBoxContainer" instance=ExtResource("5_ep6ri")]
+material = SubResource("ShaderMaterial_ep6ri")
+layout_mode = 2
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/WeaponButton1"]
+material = SubResource("ShaderMaterial_as4m5")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -93,21 +162,16 @@ offset_right = 5.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_bxf00")
+texture = SubResource("AtlasTexture_dtw8e")
 stretch_mode = 3
 
-[node name="TextureButton2" type="TextureButton" parent="."]
+[node name="WeaponButton2" parent="HBoxContainer" instance=ExtResource("5_ep6ri")]
 material = SubResource("ShaderMaterial_dtw8e")
-layout_mode = 0
-offset_left = 55.0
-offset_top = 56.0
-offset_right = 73.0
-offset_bottom = 74.0
-texture_normal = ExtResource("4_ep6ri")
-stretch_mode = 0
+layout_mode = 2
+stretch_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="TextureButton2"]
-material = SubResource("ShaderMaterial_cxnnp")
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/WeaponButton2"]
+material = SubResource("ShaderMaterial_as4m5")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -120,21 +184,16 @@ offset_right = 5.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_bxf00")
+texture = SubResource("AtlasTexture_cxnnp")
 stretch_mode = 3
 
-[node name="TextureButton3" type="TextureButton" parent="."]
-material = SubResource("ShaderMaterial_dtw8e")
-layout_mode = 0
-offset_left = 79.0
-offset_top = 56.0
-offset_right = 97.0
-offset_bottom = 74.0
-texture_normal = ExtResource("4_ep6ri")
-stretch_mode = 0
+[node name="WeaponButton3" parent="HBoxContainer" instance=ExtResource("5_ep6ri")]
+material = SubResource("ShaderMaterial_iekym")
+layout_mode = 2
+stretch_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="TextureButton3"]
-material = SubResource("ShaderMaterial_cxnnp")
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/WeaponButton3"]
+material = SubResource("ShaderMaterial_as4m5")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -147,5 +206,7 @@ offset_right = 5.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_bxf00")
+texture = SubResource("AtlasTexture_vnfqa")
 stretch_mode = 3
+
+[connection signal="pressed" from="HBoxContainer/WeaponButton1" to="." method="_on_weapon_button_1_pressed"]

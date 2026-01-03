@@ -19,7 +19,7 @@ func _ready() -> void:
 	add_ball(total)
 
 		
-	get_node("/root/Main/Player/LevelComponent").level_up.connect(on_level_up)
+	get_node("/root/Main/UI/LevelUpScreenLayer/LevelUpScreen").upgrade_weapon_1.connect(on_upgrade)
 
 
 func _process(delta: float) -> void:
@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 		balls[i].position.x = radius * sin(angle)
 		balls[i].position.y = radius * cos(angle)
 	
-func on_level_up(_level: int) -> void:
+func on_upgrade() -> void:
 	total += 1
 	@warning_ignore("narrowing_conversion")
 	speed *= 1.10
