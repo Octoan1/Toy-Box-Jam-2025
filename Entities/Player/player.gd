@@ -4,8 +4,10 @@ extends CharacterBody2D
 @onready var health_component: HealthComponent = $HealthComponent
 
 @export var SPEED = 30
+var kills := 0
 
 signal player_died
+signal display_kills(kills)
 
 func _ready() -> void:
 	health_component.died.connect(_on_player_died)
@@ -37,3 +39,7 @@ func _on_player_damaged() -> void:
 	get_node("Damaged").visible = true
 	await get_tree().create_timer(0.1).timeout# await timer timout 0.1 sec
 	get_node("Damaged").visible = false
+
+func add_kill(amount: int) -> void:
+	kills += amount
+	display_kills.emit(kills)
