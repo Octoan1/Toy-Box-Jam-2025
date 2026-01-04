@@ -92,6 +92,7 @@ text = "Play
 "
 
 [node name="InfoButton" type="Button" parent="StartMenu/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("3_0q5hy")
 text = "Info"

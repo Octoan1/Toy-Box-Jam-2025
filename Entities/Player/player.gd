@@ -36,9 +36,10 @@ func _on_player_died():
 	player_died.emit()
 	
 func _on_player_damaged() -> void:
-	get_node("Damaged").visible = true
-	await get_tree().create_timer(0.1).timeout# await timer timout 0.1 sec
-	get_node("Damaged").visible = false
+	sprite.modulate = Color("860000ff")
+	await get_tree().create_timer(0.25).timeout# await timer timout 0.1 sec
+	sprite.modulate = Color.WHITE
+
 
 func add_kill(amount: int) -> void:
 	kills += amount

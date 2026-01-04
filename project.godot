@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Toy Box Jam 2025"
+config/name="Chicken Survivors"
 run/main_scene="uid://c4fgfy2i4ib8f"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="uid://c6xq2bvu3cqta"
+config/icon="uid://b6fw8yngi0fj0"
 
 [autoload]
 

@@ -1,17 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://2aabi06icyr6"]
+[gd_scene load_steps=9 format=3 uid="uid://2aabi06icyr6"]
 
 [ext_resource type="Script" uid="uid://bgecedxyrm8ig" path="res://Entities/Player/player.gd" id="1_onrkg"]
 [ext_resource type="Script" uid="uid://bhwx8pq5c1r24" path="res://Scripts/Components/level_component.gd" id="2_4wf4l"]
 [ext_resource type="Texture2D" uid="uid://cba05f7vl3d3w" path="res://Toy Box Assets/Tilesets/tbj2_sprites_transparent_padding.png" id="3_lu8i8"]
 [ext_resource type="Material" uid="uid://cytwdfauwd2h0" path="res://Scripts/outline_mat.tres" id="4_01a4e"]
-[ext_resource type="Shader" uid="uid://b3nxr7l5ujw5g" path="res://UI/modulate_outline.gdshader" id="4_4wf4l"]
 [ext_resource type="Script" uid="uid://bykeu84f0bmpx" path="res://Scripts/Components/health_component.gd" id="4_tekja"]
 [ext_resource type="Script" uid="uid://bd0qe8lyhoy2x" path="res://Scripts/Components/hurtbox_component.gd" id="5_5c2io"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tekja"]
-shader = ExtResource("4_4wf4l")
-shader_parameter/line_color = Color(0, 0, 0.17254902, 1)
-shader_parameter/line_thickness = 1.0000000475
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 radius = 4.0
@@ -39,14 +33,6 @@ material = ExtResource("4_01a4e")
 texture = ExtResource("3_lu8i8")
 region_enabled = true
 region_rect = Rect2(140, 140, 10, 10)
-
-[node name="Damaged" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 0, 0, 1)
-material = SubResource("ShaderMaterial_tekja")
-texture = ExtResource("3_lu8i8")
-region_enabled = true
-region_rect = Rect2(0, 80, 10, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
