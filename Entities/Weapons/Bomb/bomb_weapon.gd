@@ -1,6 +1,6 @@
 extends Node2D
 
-var level = 0
+var level := 0
 
 @export_category("Weapon Settings")
 #@export var total: int = 
@@ -15,6 +15,7 @@ var level = 0
 
 @export var player: CharacterBody2D
 
+signal display_level(level)
 
 func _ready() -> void:
 	var timer : Timer = get_node("SpawnTimer")
@@ -32,15 +33,25 @@ func _on_spawn_timer_timeout() -> void:
 
 func on_upgrade() -> void:
 	level += 1
+	display_level.emit(level)
+	
+	if level == 1: 
+		_enable_weapon()
+		return
 	
 	if level % 10 == 0:
 		size += 1
 	
 	spawn_time *= 0.5
-	_update_stats()
-
-func _update_stats() -> void:
 	var timer : Timer = get_node("SpawnTimer")
 	timer.wait_time = spawn_time
+
+#func _update_stats() -> void:
+	#var timer : Timer = get_node("SpawnTimer")
+	#timer.wait_time = spawn_time
+
+func _enable_weapon() -> void:
+	self.process_mode = Node.PROCESS_MODE_INHERIT
+	self.show()
 
 	

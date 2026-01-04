@@ -38,7 +38,7 @@ metadata/_custom_type_script = "uid://bykeu84f0bmpx"
 material = ExtResource("4_01a4e")
 texture = ExtResource("3_lu8i8")
 region_enabled = true
-region_rect = Rect2(0, 80, 10, 10)
+region_rect = Rect2(140, 140, 10, 10)
 
 [node name="Damaged" type="Sprite2D" parent="."]
 visible = false

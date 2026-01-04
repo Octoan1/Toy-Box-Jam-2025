@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://fhd5unfpd876"]
+[gd_scene load_steps=19 format=3 uid="uid://fhd5unfpd876"]
 
 [ext_resource type="Texture2D" uid="uid://vneo5yc106lh" path="res://UI/GameHUD/Assets/bg_bar.png" id="1_47hi2"]
 [ext_resource type="Texture2D" uid="uid://xdcdooq63cyn" path="res://UI/GameHUD/Assets/xp_bar.png" id="2_nh7fr"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dlourrt3j4xwr" path="res://UI/GameHUD/Heart/heart.tscn" id="5_ckjjw"]
 [ext_resource type="Theme" uid="uid://b56py6kropip6" path="res://UI/theme.tres" id="5_rkqha"]
 [ext_resource type="Script" uid="uid://cwmirw8eovdec" path="res://UI/GameHUD/time_clock_test.gd" id="6_ckjjw"]
+[ext_resource type="Script" uid="uid://r2q2gctyheyb" path="res://UI/GameHUD/weapons_v_box_container.gd" id="9_ttgx4"]
+[ext_resource type="Material" uid="uid://cytwdfauwd2h0" path="res://Scripts/outline_mat.tres" id="10_wllst"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apo7m"]
 shader = ExtResource("3_gsr3m")
@@ -25,22 +27,20 @@ resource_local_to_scene = true
 atlas = ExtResource("4_krdh5")
 region = Rect2(100, 30, 10, 10)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k71qr"]
-shader = ExtResource("3_gsr3m")
-shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
-shader_parameter/line_thickness = 1.0
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ttgx4"]
+load_path = "res://.godot/imported/tbj2_sprites_transparent_padding.png-2292c98a2b6ade42be177f97783f8cc5.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sx2ym"]
-atlas = ExtResource("4_krdh5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_apo7m"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_ttgx4")
 region = Rect2(10, 40, 10, 10)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a4ucr"]
-shader = ExtResource("3_gsr3m")
-shader_parameter/line_color = Color(0.11372549, 0.16862746, 0.3254902, 1)
-shader_parameter/line_thickness = 1.0
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wllst"]
+load_path = "res://.godot/imported/tbj2_sprites_transparent_padding.png-2292c98a2b6ade42be177f97783f8cc5.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vim6w"]
-atlas = ExtResource("4_krdh5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttgx4"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_wllst")
 region = Rect2(150, 40, 10, 10)
 
 [node name="GameplayHUD" type="Control"]
@@ -115,28 +115,86 @@ text = "0:00"
 vertical_alignment = 1
 script = ExtResource("6_ckjjw")
 
-[node name="WeaponsHBoxContainer" type="HBoxContainer" parent="TopBar"]
+[node name="WeaponsVBoxContainer" type="VBoxContainer" parent="TopBar"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 21.0
-offset_right = 56.0
-offset_bottom = 31.0
+offset_right = 59.0
+offset_bottom = 47.0
+theme_override_constants/separation = 13
+script = ExtResource("9_ttgx4")
 
-[node name="Weapon2" type="TextureRect" parent="TopBar/WeaponsHBoxContainer"]
-material = SubResource("ShaderMaterial_r1hom")
+[node name="Weapon1" type="Control" parent="TopBar/WeaponsVBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+
+[node name="Texture" type="TextureRect" parent="TopBar/WeaponsVBoxContainer/Weapon1"]
+material = SubResource("ShaderMaterial_r1hom")
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
 texture = SubResource("AtlasTexture_l6xl0")
 stretch_mode = 4
 
-[node name="Weapon3" type="TextureRect" parent="TopBar/WeaponsHBoxContainer"]
-material = SubResource("ShaderMaterial_k71qr")
-layout_mode = 2
-texture = SubResource("AtlasTexture_sx2ym")
+[node name="Label" type="Label" parent="TopBar/WeaponsVBoxContainer/Weapon1"]
+material = ExtResource("10_wllst")
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 14.0
+offset_bottom = 13.0
+theme = ExtResource("5_rkqha")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Weapon4" type="TextureRect" parent="TopBar/WeaponsHBoxContainer"]
-material = SubResource("ShaderMaterial_a4ucr")
+[node name="Weapon2" type="Control" parent="TopBar/WeaponsVBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
-texture = SubResource("AtlasTexture_vim6w")
+
+[node name="Texture" type="TextureRect" parent="TopBar/WeaponsVBoxContainer/Weapon2"]
+material = SubResource("ShaderMaterial_r1hom")
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+texture = SubResource("AtlasTexture_apo7m")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="TopBar/WeaponsVBoxContainer/Weapon2"]
+material = ExtResource("10_wllst")
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 14.0
+offset_bottom = 13.0
+theme = ExtResource("5_rkqha")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Weapon3" type="Control" parent="TopBar/WeaponsVBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Texture" type="TextureRect" parent="TopBar/WeaponsVBoxContainer/Weapon3"]
+material = SubResource("ShaderMaterial_r1hom")
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+texture = SubResource("AtlasTexture_ttgx4")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="TopBar/WeaponsVBoxContainer/Weapon3"]
+material = ExtResource("10_wllst")
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 14.0
+offset_bottom = 13.0
+theme = ExtResource("5_rkqha")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TimeClockTestTimer" type="Timer" parent="."]
 autostart = true

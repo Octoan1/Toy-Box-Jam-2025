@@ -2,6 +2,7 @@ extends Control
 
 signal upgrade_weapon_1
 signal upgrade_weapon_2
+signal upgrade_weapon_3
 
 
 # Called when the node enters the scene tree for the first time.
@@ -30,4 +31,9 @@ func _on_weapon_button_1_pressed() -> void:
 func _on_weapon_button_2_pressed() -> void:
 	self.hide()
 	upgrade_weapon_2.emit()
+	get_tree().paused = false
+	
+func _on_weapon_button_3_pressed() -> void:
+	self.hide()
+	upgrade_weapon_3.emit()
 	get_tree().paused = false

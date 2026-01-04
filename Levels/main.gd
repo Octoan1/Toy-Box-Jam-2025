@@ -14,6 +14,7 @@ func _ready() -> void:
 
 func _on_game_start() -> void:
 	get_tree().paused = false
+	player.get_node("LevelComponent").add_xp(100)
 	
 func _on_player_death() -> void:
 	# Pause the entire game

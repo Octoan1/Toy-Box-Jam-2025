@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 
 func _on_chicken_died():
 	print(self.name + " died")
-	player.get_node("LevelComponent").add_xp(10)
+	player.get_node("LevelComponent").add_xp(100)
 	queue_free()
 
 
